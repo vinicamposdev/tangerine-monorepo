@@ -31,10 +31,12 @@ jobs:
       - name: Subproject Is Odd
         uses: coverallsapp/github-action@master
         with:
-          github-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
+          github-token: ${{ github.token }}
           flag-name: is-odd
+          path-to-lcov: ./packages/is-oden/coverage/lcov.info
       - name: Subproject Server
         uses: coverallsapp/github-action@master
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ github.token }}
           flag-name: server
+          path-to-lcov: ./packages/server/coverage/lcov.info
