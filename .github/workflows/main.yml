@@ -18,7 +18,9 @@ jobs:
           node-version: 16.x
 
       - name: Build
-        run: yarn build
+        run: |
+          yarn
+          yarn build
 
       - name: Install and Test ${{ matrix.package }}
         run: |
