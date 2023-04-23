@@ -7,9 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        test_number:
-          - 1
-          - 2
+        package:
+          - is-even
+          - is-odd
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js 16.x
@@ -25,8 +25,8 @@ jobs:
       - name: Coveralls Parallel
         uses: coverallsapp/github-action@v2
         with:
-          flag-name: run-${{ join(matrix.*, '-') }}
-          path-to-lcov: ./packages/is-even/coverage/lcov.info
+          flag-name: ${{ matrix.package }}
+          path-to-lcov: ./packages/${{ matrix.package }}/coverage/lcov.info
           parallel: true
 
   finish:
