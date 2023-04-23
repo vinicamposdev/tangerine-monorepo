@@ -21,12 +21,10 @@ jobs:
         with:
           github-token: ${{ secrets.REPO_TOKEN }}
           flag-name: is-even
-          path-to-lcov: packages/is-even/coverage/lcov.info
-          parallel: true
+          path-to-lcov: ./packages/is-even/coverage/lcov.info
       - name: Subproject Is Odd
         uses: coverallsapp/github-action@master
         with:
-          github-token: ${{ secrets.github_token }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           flag-name: is-odd
-          path-to-lcov: packages/is-odd/coverage/lcov.info
-          parallel: true
+          path-to-lcov: ./packages/is-odd/coverage/lcov.info
