@@ -4,7 +4,7 @@ module.exports = {
     "^@my-monorepo/(.*)$": "<rootDir>/../$1/src",
   },
   // Use esbuild to transpile TypeScript files on the fly.
-  coverageReporters: ["text", "cobertura", "lcov", "html"],
+  coverageReporters: ["cobertura", "lcov", "html"],
   transform: {
     "^.+\\.tsx?$": "esbuild-jest",
   },
