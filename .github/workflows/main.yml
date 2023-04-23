@@ -3,22 +3,6 @@
 name: Release
 on: ["push", "pull_request"]
 jobs:
-  pre-test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        test_number:
-          - 1
-          - 2
-    steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-
-      - name: npm install
-        run: yarn
   test:
     runs-on: ubuntu-latest
     strategy:
@@ -27,15 +11,20 @@ jobs:
           - is-even
           - is-odd
     steps:
-      - name: Log folders
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Build
+        run: yarn build
+
+      - name: Install and Test ${{ matrix.package }}
         run: |
-          echo "----------------Current directory"
-          ls
-          echo "----------------This is is-even folder"
-          cd packages/is-even
-          ls
-          echo "----------------This is coverage folder"
-          cd coverage
+          cd packages/${{ matrix.package }}
+          yarn
+          yarn test
       - name: Coveralls Parallel
         uses: coverallsapp/github-action@v2
         with:
