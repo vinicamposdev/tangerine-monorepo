@@ -15,16 +15,18 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Run tests
-        run: npx turbo run test
+        run: yarn test
       - name: Subproject Is Even
         uses: coverallsapp/github-action@master
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.github_token }}
           flag-name: is-even
           path-to-lcov: ./packages/is-even/coverage/lcov.info
+          parallel: true
       - name: Subproject Is Odd
         uses: coverallsapp/github-action@master
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.github_token }}
           flag-name: is-odd
           path-to-lcov: ./packages/is-odd/coverage/lcov.info
+          parallel: true
