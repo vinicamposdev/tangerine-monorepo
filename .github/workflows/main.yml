@@ -25,6 +25,6 @@ jobs:
       - name: Subproject Is Odd
         uses: coverallsapp/github-action@master
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.REPO_TOKEN }}
           flag-name: is-odd
           path-to-lcov: ./packages/is-odd/coverage/lcov.info
