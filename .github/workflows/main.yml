@@ -34,9 +34,3 @@ jobs:
           github-token: ${{ github.token }}
           flag-name: is-odd
           path-to-lcov: ./packages/is-odd/coverage/lcov.info
-      - name: Subproject Server
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ github.token }}
-          flag-name: server
-          path-to-lcov: ./packages/server/coverage/lcov.info
